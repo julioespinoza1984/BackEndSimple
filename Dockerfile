@@ -14,7 +14,7 @@ RUN mvn clean package
 FROM openjdk:11-jre-slim-buster
 
 # Exponer el puerto que utilizará la aplicación
-EXPOSE 8026
+EXPOSE 8080
 
 # Copiar el archivo JAR construido desde la etapa anterior
 COPY --from=build /app/target/BackEndSimple-1.0-SNAPSHOT.jar /app/BackEndSimple.jar
