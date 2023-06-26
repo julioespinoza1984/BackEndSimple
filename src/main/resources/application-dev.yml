@@ -1,7 +1,0 @@
-server:
-  servlet:
-    context-path: /DemoERP
-
-security:
-    jwt:
-        key: jespinoza
