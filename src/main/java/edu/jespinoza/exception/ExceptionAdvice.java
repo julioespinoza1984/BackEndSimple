@@ -25,14 +25,13 @@ public class ExceptionAdvice {
     @ExceptionHandler(ApplicationException.class)
     public ResponseEntity<CustomMessage> applicationException(ApplicationException ex) {
         log.error(ex.getMessage());
-        // ex.printStackTrace();
         CustomMessage message = new CustomMessage(HttpStatus.BAD_REQUEST.value(),
                 APPLICATION_ERROR + ex.getMessage());
         return ResponseEntity.ok(message);
     }
 
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<CustomMessage> Exception(Exception ex) {
+    public ResponseEntity<CustomMessage> exception(Exception ex) {
         log.error(ex.getMessage());
         ex.printStackTrace();
         CustomMessage message = new CustomMessage(HttpStatus.INTERNAL_SERVER_ERROR.value(),
