@@ -17,7 +17,7 @@ import java.util.function.Function;
 
 @Service("jwtService")
 public class JwtServiceImpl implements JwtService {
-    private String secret = "jespinoza";
+    private final String secret = "jespinoza";
 
     @Autowired
     @Qualifier("authResponseDao")

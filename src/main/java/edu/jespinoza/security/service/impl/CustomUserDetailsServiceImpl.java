@@ -3,7 +3,6 @@ package edu.jespinoza.security.service.impl;
 import edu.jespinoza.security.dao.UserDao;
 import edu.jespinoza.security.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -14,12 +13,11 @@ import java.util.ArrayList;
 @Service("userDetailsService")
 public class CustomUserDetailsServiceImpl implements UserDetailsService {
     @Autowired
-    @Qualifier("userDao")
     private UserDao dao;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = (User) dao.findByUserName(username);
+        User user = dao.findByUserName(username);
         return new org.springframework.security.core.userdetails.User(user.getUserName(),
                 user.getPassword(), new ArrayList<>());
     }

@@ -1,5 +1,6 @@
-package edu.jespinoza.security.domain;
+package edu.jespinoza.api.stock.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,23 +9,23 @@ import lombok.ToString;
 import java.util.Objects;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @ToString
-public class User {
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class ProviderDTO {
     private long id;
-    private String userName;
-    private String password;
-    private String email;
-    private short active;
-    private String role;
+    private String name;
+    private String rif;
+    private String phone;
+    private boolean active;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return id == user.id || userName.equals(user.getUserName()) || email.equals(user.getEmail());
+        ProviderDTO that = (ProviderDTO) o;
+        return id == that.id;
     }
 
     @Override
